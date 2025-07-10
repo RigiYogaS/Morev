@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class pages extends BaseController
+class Pages extends BaseController
 {
     public function index() 
     {
@@ -73,4 +73,4 @@ class pages extends BaseController
     {
         echo view('/dashboard/addreview.php');
     }
-};
+}

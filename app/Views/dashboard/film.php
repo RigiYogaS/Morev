@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morev - Film Page</title>
-    <link rel="stylesheet" a href="<?= base_url('/cssDashboard/film.css?v=' . time()); ?>">
+    <link rel="stylesheet" href="<?= base_url('/cssDashboard/film.css?v=' . time()); ?>">
     <link rel=" preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -31,6 +31,10 @@
         <div class="profile">
             <p id="name">User</p>
             <i class='bx bx-chevron-down'></i>
+            <div class="dropdown-menu">
+                <a href="<?= base_url('/dashboard/index'); ?>">Home</a>
+                <a href="<?= base_url('/auth/login'); ?>">Logout</a>
+            </div>
         </div>
     </nav>
     <main>
@@ -129,6 +133,29 @@
             <small>Copyright © 2024 Morev. All rights reserved.</small>
         </p>
     </footer>
+
+    <script>
+        // Dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const profile = document.querySelector('.profile');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            profile.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function() {
+                dropdownMenu.classList.remove('show');
+            });
+
+            // Prevent dropdown from closing when clicking inside it
+            dropdownMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -31,12 +31,16 @@
         <div class="profile">
             <p id="name">User</p>
             <i class='bx bx-chevron-down'></i>
+            <div class="dropdown-menu">
+                <a href="<?= base_url('/'); ?>">Home</a>
+                <a href="<?= base_url('/auth/login'); ?>">Logout</a>
+            </div>
         </div>
     </nav>
     <main>
         <img src="<?= base_url('/assets/hero/heroLanding.jpg'); ?>" alt="hero">
         <p>Your go-to source for honest film and series reviews. Discover your next favorite watch!</p>
-        <button><a href="<?= base_url('/guest/film'); ?>">start review</a></button>
+        <button><a href="<?= base_url('/dashboard/film'); ?>">start review</a></button>
         <div class="linearGradient"></div>
     </main>
     <section>
@@ -92,6 +96,29 @@
             <small>Copyright © 2024 Morev. All rights reserved.</small>
         </p>
     </footer>
+
+    <script>
+        // Dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const profile = document.querySelector('.profile');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            profile.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function() {
+                dropdownMenu.classList.remove('show');
+            });
+
+            // Prevent dropdown from closing when clicking inside it
+            dropdownMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
 </body>
 
 </html>
